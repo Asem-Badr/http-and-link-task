@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:httptask/models/user.dart';
 import 'package:httptask/screens/userDetails.dart';
 import 'package:httptask/screens/widget/myCard.dart';
-import 'package:httptask/services/userservice.dart';
-
+import 'package:httptask/services/userService.dart';
 import '../utils.dart';
 
 class UserScreen extends StatefulWidget {
@@ -20,18 +19,19 @@ class _UserScreenState extends State<UserScreen> {
     loading = false;
     setState(() {});
   }
-void initState() {
+
+  void initState() {
     super.initState();
     getUserList();
   }
-  
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Users screen"),
       ),
-      body: loading ?
-          Center(child: CircularProgressIndicator())
+      body: loading
+          ? Center(child: CircularProgressIndicator())
           : ListView.builder(
               itemCount: users.length,
               itemBuilder: (BuildContext context, int index) {
